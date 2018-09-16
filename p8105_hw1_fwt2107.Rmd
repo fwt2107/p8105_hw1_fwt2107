@@ -108,4 +108,7 @@ plot_df <- data_frame(
 )
 ```
 
-
+This dataframe is named plot_df. It has `r nrow(plot_df)` rows and 
+`r ncol(plot_df)` columns. The mean of x is `r mean(x)`, and the median
+of x is `r median(x)`. The proportion of cases in logic_vector which are
+TRUE is `r (length(which(logic_vector == T)))/10`%. 
