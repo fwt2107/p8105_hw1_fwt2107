@@ -112,3 +112,38 @@ This dataframe is named plot_df. It has `r nrow(plot_df)` rows and
 `r ncol(plot_df)` columns. The mean of x is `r mean(x)`, and the median
 of x is `r median(x)`. The proportion of cases in logic_vector which are
 TRUE is `r (length(which(logic_vector == T)))/10`%. 
+
+This is the first of 3 scatterplots of y vs x. The points with coordinates
+(x, y) in which x + y > 0 are one color, and the remaining points are a
+different color. These 2 colors are the only 2 colors used in the color 
+scale.
+```{r}
+library('ggplot2')
+logic_ggplot <- ggplot(plot_df, aes(x = x, y = y, color = logic_vector)) + 
+  geom_point()
+logic_ggplot
+```
+
+This is the second scatterplot of y vs x. The points with coordinates
+(x, y) in which x + y > 0 are one color, and the remaining points are a
+different color. The color scale uses a gradient, but because there are
+only two different numeric values in num_coerced only two shades of the
+scale are used.
+```{r}
+library('ggplot2')
+num_ggplot <- ggplot(plot_df, aes(x = x, y = y, color = num_coerced)) + 
+  geom_point()
+num_ggplot
+```
+
+This is the third scatterplot of y vs x. The points with coordinates
+(x, y) in which x + y > 0 are one color, and the remaining points are a
+different color. Like the first scatterplot which used logic_vector for 
+its color scale, these 2 colors are the only 2 colors used in the color 
+scale.
+```{r}
+library('ggplot2')
+factor_ggplot <- ggplot(plot_df, aes(x = x, y = y, color = factor_coerced)) + 
+  geom_point()
+factor_ggplot
+```
