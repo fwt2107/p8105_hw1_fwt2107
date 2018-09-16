@@ -79,3 +79,33 @@ as.numeric(as.character(factor_vector))
 ```
 
 
+# Problem 2
+## Creating the dataframe
+
+We first create the vectors we will eventually combine for our dataframe.
+
+x is a random sample of 1000 numbers from the standard normal distribution.
+y is a random sample of 1000 numbers from the standard normal distribution.
+logic_vector is a vector of logic values indicating if x + y > 0.
+num_coerced is logic_vector coereced as a numeric vector.
+factor_coerced is logic_vector coerced as a factor.
+```{r}
+x <- rnorm(1000)
+y <- rnorm(1000)
+logic_vector <- (x + y) > 0
+num_coerced <- as.numeric(logic_vector)
+factor_coerced <- as.factor(logic_vector)
+```
+
+We create the dataframe containing the vectors we just created.
+```{r}
+plot_df <- data_frame(
+  x,
+  y,
+  logic_vector,
+  num_coerced,
+  factor_coerced
+)
+```
+
+
