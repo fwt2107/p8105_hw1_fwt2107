@@ -1,0 +1,81 @@
+---
+title: "p8105_hw_fwt2107"
+author: "Felix Tran"
+date: "September 16, 2018"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Problem 1
+## Creating the dataframe
+We will create a dataframe with 4 entries for problem 1. We initialize the 4 entries first.
+
+random_sample is a vector of 10 random numbers from a uniform distribution [0, 5].
+
+logic_vector is a vector showing which numbers in random_sample are greater than 2.
+
+char_vector is a character vector of length 10.
+
+factor_vector is a factor of length 10.
+
+```{r}
+random_sample <- runif(10, min = 0, max = 5)
+logic_vector <- 2 > random_sample
+char_vector <- vector(mode = "character", length = 10)
+factor_vector <- factor(c(vector(length = 10)))
+```
+
+
+prob1_dataframe is created containing the 4 vectors
+
+```{r}
+library(tibble)
+prob1_dataframe <- data_frame(
+  random_sample,
+  logic_vector,
+  char_vector,
+  factor_vector
+)
+```
+
+## Calculating the means of each vector
+The mean can be calculate for random_sample and logic_vector because their
+values are either numeric or logical 
+
+```{r}
+mean(prob1_dataframe$random_sample)
+mean(prob1_dataframe$logic_vector)
+```
+
+
+However, the mean cannot be calculated for char_vector and factor_vector 
+because their values are not numeric nor logical
+```{r}
+mean(prob1_dataframe$char_vector)
+mean(prob1_dataframe$factor_vector)
+```
+
+## Converting variable types
+Applying the as.numeric function to logic_vector converts the TRUE values
+into 1's and the FALSE values into 0's. Applying the as.numeric function to
+char_vector converts all the "" entries into NA's. Applying the as.numeric
+function to factor_vector converts all the values into 1's.
+```{r, results = "hide"}
+as.numeric(logic_vector)
+as.numeric(char_vector)
+as.numeric(factor_vector)
+```
+
+We convert char_vector from character vector to factor to numeric. This
+gives us a numeric vector with all entries = 1. We also convert
+factor_vector from factor to character vector to numeric. This gives
+us a vector with all entires NA.
+```{r}
+as.numeric(as.factor(char_vector))
+as.numeric(as.character(factor_vector))
+```
+
+
