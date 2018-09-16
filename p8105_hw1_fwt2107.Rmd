@@ -130,7 +130,6 @@ different color. The color scale uses a gradient, but because there are
 only two different numeric values in num_coerced only two shades of the
 scale are used.
 ```{r}
-library('ggplot2')
 num_ggplot <- ggplot(plot_df, aes(x = x, y = y, color = num_coerced)) + 
   geom_point()
 num_ggplot
@@ -142,8 +141,13 @@ different color. Like the first scatterplot which used logic_vector for
 its color scale, these 2 colors are the only 2 colors used in the color 
 scale.
 ```{r}
-library('ggplot2')
 factor_ggplot <- ggplot(plot_df, aes(x = x, y = y, color = factor_coerced)) + 
   geom_point()
 factor_ggplot
 ```
+
+We save the first scatterplot.
+```{r}
+ggsave(plot = logic_ggplot, filename = 'logic_scatterplot.pdf')
+```
+
